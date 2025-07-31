@@ -1,0 +1,53 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, sans-serif;
+background-color: #000;
+color: #fff;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.principio {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+max-width: 1000px;
+padding: 40px;
+}
+
+.esquerda {
+flex: 1;
+padding-right: 40px;
+}
+
+.botao {
+margin-top: 40px;
+background-color: #7959b8;
+color: #fff;
+border: none;
+padding: 15px 60px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+border-radius: 4px;
+margin-left: 20px;
+}
+
+.direita {
+flex: 1;
+display: flex;
+justify-content: center;
+}
+
+.imagem {
+max-width: 100%;
+border-radius: 10px;
+}
