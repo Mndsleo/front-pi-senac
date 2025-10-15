@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.logo {
+    margin-bottom: 20px;
+    cursor: default;
+}
+
+.logo img {
+    max-width: 400px;
+}
+
+.card-lista {
+    background: #e0dbf8;
+    padding: 25px 30px;
+    border-radius: 25px;
+    width: 100%;
+    color: #000;
+}
+
+.titulo-lista {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #7c52d1;
+    text-align: center;
+}
+
+.tabela-container {
+    overflow-x: auto;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #7c52d1;
+    color: #fff;
+}
+
+th {
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e0dbf8;
+    font-size: 13px;
+}
+
+tbody tr:hover {
+    background-color: #f5f3ff;
+    cursor: pointer;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sem-dados {
+    text-align: center;
+    padding: 30px;
+    color: #7c52d1;
+    font-style: italic;
+}
+
+.btn-voltar {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #7c52d1;
+    color: #fff;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.btn-voltar:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(124, 82, 209, 0.3);
+}
+
+@media (max-width: 768px) {
+    .card-lista {
+        padding: 20px;
+    }
+
+    .titulo-lista {
+        font-size: 18px;
+    }
+
+    th, td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}

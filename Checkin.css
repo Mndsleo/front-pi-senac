@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px 20px;
+}
+
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 650px;
+}
+
+.logo {
+  margin-bottom: 20px;
+  cursor: default;
+}
+
+.logo img {
+  max-width: 400px;
+}
+
+.card-checkin {
+  background: #e0dbf8;
+  padding: 30px;
+  border-radius: 25px;
+  display: block;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  color: #000;
+}
+
+.speaker-photo {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.speaker-photo img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.speaker-info {
+  margin-left: 130px;
+  margin-bottom: 10px;
+}
+
+.speaker-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.speaker-role {
+  font-size: 16px;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.speaker-role span:first-child {
+  color: #7c52d1;
+  font-weight: bold;
+}
+
+.speaker-time {
+  color: #7c52d1;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.speaker-theme {
+  margin-top: 1px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.speaker-theme span {
+  font-weight: bold;
+}
+
+.checkin-form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkin-form label {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.checkin-form input {
+  margin-top: 0px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.voltar {
+  background-color: #7c52d1;
+  color: #fff;
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+.confirmar {
+  background-color: #7c52d1;
+  color: #fff;
+  flex: 1;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(124, 82, 209, 0.3);
+}
+
+label {
+  font-size: 12px;
+  margin-bottom: 2px;
+  line-height: 1.7;
+}
+
+.mensagem-sucesso {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.mensagem-sucesso.show {
+  opacity: 1;
+  transform: translateY(0);
+}

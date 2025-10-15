@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Evento</title>
+  <link rel="stylesheet" href="fundodetelas.css">
+  <link rel="stylesheet" href="CriarEvento.css">
+  <link rel="stylesheet" href="transicoes.css">
+</head>
+<body>
+  <div class="container">
+
+    <div class="logo">
+      <a href="TelaLogin.html"><img src="img/logo_dois.png" alt="Participe"></a>
+    </div>
+
+    <div class="card-evento">
+      <form class="evento-form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="comunicador">Nome do(a) comunicador(a):</label>
+            <input type="text" id="comunicador" name="comunicador" required>
+          </div>
+
+          <div class="form-group">
+            <label for="especializacao">Especialização:</label>
+            <input type="text" id="especializacao" name="especializacao" required>
+          </div>
+
+          <div class="form-group">
+            <label for="organizador">Organizador(a) do evento:</label>
+            <input type="text" id="organizador" name="organizador" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="categoria">Categoria do Evento:</label>
+            <input type="text" id="categoria" name="categoria">
+          </div>
+
+          <div class="form-group">
+            <label for="duracao">Duração do evento:</label>
+            <input type="text" id="duracao" name="duracao">
+          </div>
+
+          <div class="form-group">
+            <label for="data">Data do Evento:</label>
+            <input type="date" id="data" name="data">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group name">
+            <label for="nome-evento">Nome do Evento:</label>
+            <input type="text" id="nome-evento" name="nome-evento" required>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <a href="Administrador.html"><button type="button" class="btn voltar">VOLTAR</button></a>
+          <button type="reset" class="btn limpar">LIMPAR</button>
+          <button type="submit" class="btn criar">CRIAR EVENTO</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="criarEvento.js"></script>
+  <script src="transicoes.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in</title>
+    <link rel="stylesheet" href="fundodetelas.css">
+    <link rel="stylesheet" href="Checkin.css">
+    <link rel="stylesheet" href="transicoes.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="logo">
+        <a href="TelaLogin.html"><img src="img/logo_dois.png" alt="Participe"></a>
+    </div>
+
+    <div class="card-checkin">
+        <div class="speaker-photo">
+            <img src="img/mina.png" alt="Foto da palestrante">
+        </div>
+
+        <div class="speaker-info">
+            <h2 class="speaker-name">ANDRESSA ROJCKS</h2>
+            <p class="speaker-role"><span>Nutricionista</span><span class="speaker-time">9:00 AM - 12:00 NN</span></p>
+            <p class="speaker-theme">
+                <span>Tema:</span>eeeeeeeexemploo
+            </p>
+        </div>
+
+        <form class="checkin-form">
+            <label for="nome">Informe seu nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="setor">Informe seu setor:</label>
+            <input type="text" id="setor" name="setor" required>
+
+            <div class="form-buttons">
+                <a href="Usuario.html"><button type="button" class="btn voltar">VOLTAR</button></a>
+                <button type="submit" class="btn confirmar">CONFIRMAR CHECK-IN?</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="Checkin.js"></script>
+<script src="transicoes.js"></script>
+</body>
+</html>

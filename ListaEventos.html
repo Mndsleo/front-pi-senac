@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Eventos</title>
+    <link rel="stylesheet" href="fundodetelas.css">
+    <link rel="stylesheet" href="ListaEventos.css">
+    <link rel="stylesheet" href="transicoes.css">
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <a href="TelaLogin.html"><img src="img/logo_dois.png" alt="Participe"></a>
+    </div>
+
+    <div class="card-lista">
+        <h1 class="titulo-lista">Lista de Eventos</h1>
+        
+        <div class="tabela-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome do(a) Comunicador(a)</th>
+                        <th>Especialização</th>
+                        <th>Organizador(a) do Evento</th>
+                        <th>Categoria</th>
+                        <th>Data do Evento</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela">
+                    <tr>
+                        <td colspan="5" class="sem-dados">Nenhum evento cadastrado ainda.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="Administrador.html"><button type="button" class="btn-voltar">VOLTAR</button></a>
+    </div>
+</div>
+
+<script src="ListaEventos.js"></script>
+<script src="transicoes.js"></script>
+</body>
+</html>
