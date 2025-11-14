@@ -21,11 +21,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Nome do(a) Comunicador(a)</th>
-                        <th>Especialização</th>
-                        <th>Organizador(a) do Evento</th>
-                        <th>Categoria</th>
-                        <th>Data do Evento</th>
+                            <th>Nome</th>
+                            <th>Email</th>
                     </tr>
                 </thead>
                 <tbody id="corpo-tabela">
@@ -40,7 +37,56 @@
     </div>
 </div>
 
-<script src="ListaEventos.js"></script>
 <script src="transicoes.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventoId = urlParams.get("id");
+
+    const tbody = document.getElementById("corpo-tabela");
+    if (!eventoId) {
+        tbody.innerHTML = `<tr><td colspan="2" class="sem-dados">ID do evento não fornecido.</td></tr>`;
+        return;
+    }
+
+    try {
+        const response = await fetch(`http://localhost:8000/event/${eventoId}/checkin`, {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (!response.ok) throw new Error("Falha ao carregar usuários");
+
+        const usuarios = (await response.json()) || [];
+
+        if (!Array.isArray(usuarios) || usuarios.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="2" class="sem-dados">Nenhum usuário confirmado ainda.</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = "";
+
+        usuarios.forEach(u => {
+            const tr = document.createElement("tr");
+
+            const tdNome = document.createElement("td");
+            tdNome.textContent = u.name;
+            tr.appendChild(tdNome);
+
+            const tdEmail = document.createElement("td");
+            tdEmail.textContent = u.email;
+            tr.appendChild(tdEmail);
+
+            tbody.appendChild(tr);
+        });
+
+    } catch (err) {
+        console.error("Erro ao buscar usuários:", err);
+        tbody.innerHTML = `<tr><td colspan="2" class="sem-dados">Erro ao carregar usuários.</td></tr>`;
+    }
+});
+</script>
+
+
 </body>
 </html>

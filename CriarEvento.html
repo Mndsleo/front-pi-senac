@@ -18,46 +18,21 @@
     <div class="card-evento">
       <form class="evento-form">
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="comunicador">Nome do(a) comunicador(a):</label>
-            <input type="text" id="comunicador" name="comunicador" required>
-          </div>
+              <div class="form-group">
+                      <label for="nome-evento">Nome do Evento:</label>
+                      <input type="text" id="nome-evento" name="nome-evento" required>
+              </div>
 
-          <div class="form-group">
-            <label for="especializacao">Especialização:</label>
-            <input type="text" id="especializacao" name="especializacao" required>
-          </div>
+              <div class="form-group">
+                      <label for="descricao">Descrição:</label>
+                      <textarea id="descricao" name="descricao" required></textarea>
+              </div>
 
-          <div class="form-group">
-            <label for="organizador">Organizador(a) do evento:</label>
-            <input type="text" id="organizador" name="organizador" required>
-          </div>
-        </div>
+              <div class="form-group">
+                      <label for="datahora">Data e Hora:</label>
+                      <input type="datetime-local" id="datahora" name="datahora" required>
+              </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="categoria">Categoria do Evento:</label>
-            <input type="text" id="categoria" name="categoria">
-          </div>
-
-          <div class="form-group">
-            <label for="duracao">Duração do evento:</label>
-            <input type="text" id="duracao" name="duracao">
-          </div>
-
-          <div class="form-group">
-            <label for="data">Data do Evento:</label>
-            <input type="date" id="data" name="data">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group name">
-            <label for="nome-evento">Nome do Evento:</label>
-            <input type="text" id="nome-evento" name="nome-evento" required>
-          </div>
-        </div>
 
         <div class="form-buttons">
           <a href="Administrador.html"><button type="button" class="btn voltar">VOLTAR</button></a>
@@ -67,7 +42,52 @@
       </form>
     </div>
   </div>
-  <script src="criarEvento.js"></script>
+
   <script src="transicoes.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".evento-form");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.querySelector("#nome-evento").value;
+        const description = document.querySelector("#descricao").value;
+        const dateInput = document.querySelector("#datahora").value; // "2025-11-28T22:30"
+        
+        if (!name || !description || !dateInput) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+
+        const dateISO = dateInput + ":00Z"; // Corrige o formato para Go: "2025-11-28T22:30:00Z"
+
+        const body = { name, description, date: dateISO };
+
+        try {
+            const response = await fetch("http://localhost:8000/event", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify(body)
+            });
+
+            if (!response.ok) {
+                throw new Error("Falha ao criar evento");
+            }
+
+            window.location.href = "Administrador.html";
+
+        } catch (err) {
+            console.error(err);
+            alert("Erro ao criar evento: " + err.message);
+        }
+    });
+});
+</script>
+
 </body>
 </html>
+

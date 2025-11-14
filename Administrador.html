@@ -10,46 +10,11 @@
 <body>
 <div class="principio">
     <div class="esquerda">
-        <h1 class="txt">PRÓXIMOS EVENTOS:</h1>
+        <h1 class="txt">TODOS OS EVENTOS:</h1>
         <hr style="background-color: white;">
 
-        <div class="evento">
-            <img src="img/mina.png" alt="Andressa Rojcks">
-            <div class="evento-info">
-                <h3>ANDRESSA ROJCKS <span>Nutricionista</span></h3>
-                <p>Introduce the speaker and share sneak peeks of what they will talk about. Also, share details about the speaker to establish credibility.</p>
-                <div class="botao-info">
-                    <span class="hora">30/10/25 — 9:00AM/11:30AM</span>
-                    <a href="ListaEventos.html"><button class="listar-presenca">Lista de Presença</button></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="evento">
-            <img src="img/cara.png" alt="Oliver Wilson">
-            <div class="evento-info">
-                <h3>OLIVER WILSON <span>Bem-estar coorporativo</span></h3>
-                <p>Introduce the speaker and share sneak peeks of what they will talk about. Also, share details about the speaker to establish credibility.</p>
-                <div class="botao-info">
-                    <span class="hora">15/05/25 — 13:30PM/15:00PM</span>
-                    <a href="ListaEventos.html"><button class="listar-presenca">Lista de Presença</button></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="evento">
-            <img src="img/mulher.png" alt="Oliver Wilson">
-            <div class="evento-info">
-                <h3>OLIVER WILSON <span>Bem-estar coorporativo</span></h3>
-                <p>Introduce the speaker and share sneak peeks of what they will talk about. Also, share details about the speaker to establish credibility.</p>
-                <div class="botao-info">
-                    <span class="hora">26/06/25 — 14:00PM/16:00PM</span>
-                    <a href="ListaEventos.html"><button class="listar-presenca">Lista de Presença</button></a>
-                </div>
-            </div>
-        </div>
-        <a href="CriarEvento.html"><button class="criar-evento">Criar Evento</button></a>
     </div>
+        <a href="CriarEvento.html"><button class="criar-evento">Criar Evento</button></a>
 
     <div class="direita">
         <a href="TelaLogin.html"><img src="img/participe_dois.png" alt="imagem" class="logo"></a>
@@ -58,5 +23,64 @@
     </div>
 </div>
 <script src="transicoes.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const eventosContainer = document.querySelector(".esquerda");
+
+    function formatarData(dataISO) {
+        const data = new Date(dataISO);
+        const dia = String(data.getDate()).padStart(2, "0");
+        const mes = String(data.getMonth() + 1).padStart(2, "0");
+        const ano = data.getFullYear();
+        const hora = String(data.getHours()).padStart(2, "0");
+        const minuto = String(data.getMinutes()).padStart(2, "0");
+        return `${dia}/${mes}/${ano} — ${hora}:${minuto}`;
+    }
+
+    try {
+        const response = await fetch("http://localhost:8000/event/all", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (!response.ok) throw new Error("Falha ao carregar eventos");
+
+        const eventos = await response.json();
+
+        const staticEventos = eventosContainer.querySelectorAll(".evento");
+        staticEventos.forEach(ev => ev.remove());
+
+        eventos.forEach(evento => {
+            const eventDiv = document.createElement("div");
+            eventDiv.classList.add("evento");
+
+            const eventHTML = `
+                <div class="evento-info">
+                    <h3>${evento.name}</h3>
+                    <p>${evento.description}</p>
+                    <div class="botao-info">
+                        <span class="hora">${formatarData(evento.date)}</span>
+                        <a href="ListaEventos.html?id=${evento.id}"><button class="listar-presenca">Lista de Presença</button></a>
+                    </div>
+                </div>
+            `;
+
+            eventDiv.innerHTML = eventHTML;
+
+            const criarEventoButton = eventosContainer.querySelector(".criar-evento");
+            if (criarEventoButton) {
+                criarEventoButton.parentNode.insertBefore(eventDiv, criarEventoButton);
+            } else {
+                eventosContainer.appendChild(eventDiv);
+            }
+        });
+
+    } catch (err) {
+        console.error("Erro ao buscar eventos:", err);
+        eventosContainer.insertAdjacentHTML("beforeend", `<p style="color:red;">Não foi possível carregar os eventos.</p>`);
+    }
+});
+</script>
+
 </body>
 </html>
