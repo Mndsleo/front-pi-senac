@@ -1,6 +1,8 @@
 body, html {
-        height: auto;
-        overflow-y: auto;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -8,15 +10,17 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #000000;
+    min-height: 100vh;
 }
 
 .principio {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 18px 30px;
+    padding: 20px 40px;
     box-sizing: border-box;
-    flex-wrap: wrap; /* permite que os elementos quebrem linha se for necessário */
+    flex-wrap: wrap;
+    min-height: 100vh;
 }
 
 .esquerda {
@@ -126,10 +130,10 @@ body {
 .txt {
     color: white;
 }
+
 .eventos {
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
 }
 
 .criar-evento {
@@ -141,8 +145,9 @@ body {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    min-width: 300px;
+    min-width: 200px;
     min-height: 35px;
+    margin-top: 10px;
 }
 
 .listar-presenca{
@@ -161,3 +166,4 @@ body {
 .logo{
     cursor: default;
 }
+
